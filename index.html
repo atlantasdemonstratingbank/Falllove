@@ -1123,6 +1123,7 @@ async function doLogin() {
   try {
     await auth.signInWithEmailAndPassword(email, pass);
   } catch(e) {
+    console.error('Login error:', e);
     showAuthError(friendlyAuthError(e.code));
     btn.disabled = false; btn.textContent = 'Sign In';
   }
@@ -1139,28 +1140,50 @@ async function doRegister() {
   const btn = document.getElementById('reg-btn');
   btn.disabled = true; btn.textContent = 'Creating…';
   try {
-    // Check username unique
-    const snap = await db.ref('fil_users').orderByChild('username').equalTo(username).once('value');
-    if (snap.exists()) { showAuthError('Username already taken.'); btn.disabled=false; btn.textContent='Create Account'; return; }
+    // Create auth account first
     const cred = await auth.createUserWithEmailAndPassword(email, pass);
-    await db.ref('fil_users/' + cred.user.uid).set({
-      uid: cred.user.uid, name, username, email, bio:'', photoURL:'', createdAt: Date.now(), online: true
-    });
+    // Then check username uniqueness and write profile
+    try {
+      const snap = await db.ref('fil_users').orderByChild('username').equalTo(username).once('value');
+      if (snap.exists()) {
+        // Username taken — delete the auth account we just made
+        await cred.user.delete();
+        showAuthError('Username already taken. Please choose another.');
+        btn.disabled = false; btn.textContent = 'Create Account';
+        return;
+      }
+      await db.ref('fil_users/' + cred.user.uid).set({
+        uid: cred.user.uid, name, username, email, bio:'', photoURL:'', createdAt: Date.now(), online: true
+      });
+    } catch(dbErr) {
+      // DB write failed — still signed in, write minimal profile
+      console.warn('DB write issue:', dbErr);
+      await db.ref('fil_users/' + cred.user.uid).set({
+        uid: cred.user.uid, name, username, email, bio:'', photoURL:'', createdAt: Date.now(), online: true
+      });
+    }
   } catch(e) {
-    showAuthError(friendlyAuthError(e.code));
+    console.error('Register error:', e);
+    const detail = e.message ? e.message.replace('Firebase: ','').replace(/ \(auth\/[^)]+\)/,'') : '';
+    showAuthError(friendlyAuthError(e.code) + (detail ? '\n' + detail : ''));
     btn.disabled = false; btn.textContent = 'Create Account';
   }
 }
 
 function friendlyAuthError(code) {
   const map = {
-    'auth/user-not-found':'No account found with that email.',
-    'auth/wrong-password':'Incorrect password.',
-    'auth/email-already-in-use':'Email already in use.',
-    'auth/invalid-email':'Invalid email address.',
-    'auth/too-many-requests':'Too many attempts. Please wait.'
+    'auth/user-not-found':         'No account found with that email.',
+    'auth/wrong-password':         'Incorrect password.',
+    'auth/invalid-credential':     'Incorrect email or password.',
+    'auth/email-already-in-use':   'An account with that email already exists.',
+    'auth/invalid-email':          'Invalid email address.',
+    'auth/too-many-requests':      'Too many attempts. Please wait.',
+    'auth/weak-password':          'Password too weak — use at least 6 characters.',
+    'auth/network-request-failed': 'Network error. Check your connection.',
+    'auth/operation-not-allowed':  'Email sign-in not enabled. Go to Firebase Console → Authentication → Sign-in method → Enable Email/Password.',
+    'auth/configuration-not-found':'Firebase Auth not configured. Enable Email/Password in Firebase Console.',
   };
-  return map[code] || 'Something went wrong. Please try again.';
+  return map[code] || (code ? '[' + code + '] Something went wrong.' : 'Something went wrong. Please try again.');
 }
 
 function doLogout() {
