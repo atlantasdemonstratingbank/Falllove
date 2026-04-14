@@ -1,15 +1,16 @@
 {
   "name": "Fall I Love",
   "short_name": "FallILove",
-  "description": "Next-generation messenger. Feel every word.",
-  "start_url": "./",
+  "description": "The next generation messenger. Connect, match, and share.",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "categories": ["social", "communication"],
+  "orientation": "portrait",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-  ]
+    { "src": "https://via.placeholder.com/192x192/0a0a0a/ffffff?text=FIL", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://via.placeholder.com/512x512/0a0a0a/ffffff?text=FIL", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["social", "communication"],
+  "screenshots": []
 }
