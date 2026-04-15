@@ -2,8 +2,8 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta name="theme-color" content="#0a0a0a"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#080808"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Fall I Love"/>
@@ -14,274 +14,222 @@
 </head>
 <body>
 
-<!-- ══ SPLASH ══ -->
+<!-- SPLASH -->
 <div id="splash">
-  <div class="splash-logo">Fall <em>I Love</em></div>
-  <div class="splash-ring"></div>
+  <div class="sp-logo">Fall <em>I Love</em></div>
+  <div class="sp-tag">Messenger · 2030 Edition</div>
+  <div class="sp-dots">
+    <div class="sp-dot"></div>
+    <div class="sp-dot"></div>
+    <div class="sp-dot"></div>
+  </div>
 </div>
 
-<!-- ══ iOS INSTALL BANNER ══ -->
+<!-- iOS BANNER -->
 <div id="ios-banner">
-  <div class="ios-banner-inner">
-    <div class="ios-banner-icon">F<em style="font-style:italic">IL</em></div>
-    <div class="ios-banner-text">
-      <div class="ios-banner-title">Install Fall I Love</div>
-      <div class="ios-banner-sub">Tap <span>Share</span> then <span>"Add to Home Screen"</span> for the full app experience</div>
+  <div class="ios-inner">
+    <div class="ios-icon">FIL</div>
+    <div class="ios-body">
+      <div class="ios-title">Install Fall I Love</div>
+      <div class="ios-sub">Tap <strong>Share</strong> then <strong>"Add to Home Screen"</strong></div>
     </div>
-    <button class="ios-banner-close" onclick="dismissIOS()">✕</button>
+    <button class="ios-close" onclick="dismissIOS()">✕</button>
   </div>
 </div>
 
-<!-- ══ ANDROID INSTALL POPUP ══ -->
-<div id="android-install">
-  <div class="android-install-inner">
-    <div class="android-install-icon">FIL</div>
-    <div class="android-install-text">
-      <div class="android-install-title">Install Fall I Love</div>
-      <div class="android-install-sub">Get the full app — no App Store needed</div>
+<!-- ANDROID POPUP -->
+<div id="android-popup">
+  <div class="ap-inner">
+    <div class="ap-icon">FIL</div>
+    <div>
+      <div class="ap-title">Install Fall I Love</div>
+      <div class="ap-sub">Get the full app — no App Store needed</div>
     </div>
   </div>
-  <div class="android-install-btns">
-    <button class="btn btn-ghost btn-sm" onclick="dismissAndroid()">Not now</button>
-    <button class="btn btn-primary btn-sm" onclick="installAndroid()">⬇ Install Free</button>
+  <div class="ap-btns">
+    <button class="btn btn-g btn-sm" onclick="dismissAndroid()">Not now</button>
+    <button class="btn btn-gold btn-sm" onclick="installAndroid()">⬇ Install Free</button>
   </div>
 </div>
 
-<!-- ══ AUTH SCREEN ══ -->
+<!-- AUTH SCREEN -->
 <div id="auth-screen">
-  <div class="auth-wrap">
-    <div class="auth-brand">
-      <div class="auth-brand-name">Fall <em>I Love</em></div>
-      <div class="auth-brand-sub">Messenger · 2030 Edition</div>
+  <div class="auth-layout">
+
+    <!-- Visual panel (desktop) -->
+    <div class="auth-visual">
+      <div class="av-bg"></div>
+      <div class="orb1 av-orb"></div>
+      <div class="orb2 av-orb"></div>
+      <div class="av-quote">
+        <blockquote>"The best conversations happen when two people forget to check the time."</blockquote>
+        <cite>Fall I Love · 2030</cite>
+      </div>
+      <div class="av-feats">
+        <div class="feat-pill"><span>✨</span><span class="feat-txt">Match with people who vibe with you</span></div>
+        <div class="feat-pill"><span>🔗</span><span class="feat-txt">Share your personal chat link</span></div>
+        <div class="feat-pill"><span>📷</span><span class="feat-txt">Send compressed photos instantly</span></div>
+        <div class="feat-pill"><span>🌓</span><span class="feat-txt">Dark & light — your choice</span></div>
+      </div>
     </div>
 
-    <div class="auth-card">
+    <!-- Form panel -->
+    <div class="auth-fp">
+      <div class="auth-wm">Fall <em>I Love</em></div>
+      <div class="auth-stag">Messenger · 2030 Edition</div>
+
       <div class="auth-tabs">
-        <button class="auth-tab active" data-tab="login"    onclick="switchAuthTab('login')">Sign In</button>
-        <button class="auth-tab"        data-tab="register" onclick="switchAuthTab('register')">Create Account</button>
+        <button class="atab on" data-tab="login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="atab" data-tab="register" onclick="switchAuthTab('register')">Create Account</button>
       </div>
 
       <!-- LOGIN -->
-      <div id="login-section" class="auth-body">
-        <div class="field-group">
-          <label class="field-label">Email</label>
-          <input class="field" id="login-email" type="email" placeholder="you@example.com" autocomplete="email"/>
+      <div id="login-sec">
+        <div class="fw">
+          <label class="fl">Email</label>
+          <input class="fd" id="l-email" type="email" placeholder="you@example.com" autocomplete="email"/>
         </div>
-        <div class="field-group">
-          <label class="field-label">Password</label>
-          <input class="field" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password"/>
+        <div class="fw">
+          <label class="fl">Password</label>
+          <input class="fd" id="l-pass" type="password" placeholder="••••••••" autocomplete="current-password"/>
         </div>
-        <button class="btn btn-primary" id="login-btn" onclick="doLogin()">Sign In</button>
-        <div class="auth-error" id="auth-error"></div>
+        <button class="btn btn-p" id="l-btn" onclick="doLogin()">Sign In</button>
+        <div class="auth-err" id="auth-err"></div>
       </div>
 
-      <!-- REGISTER — 3 steps -->
-      <div id="reg-section" class="auth-body" style="display:none">
-        <div class="step-dots">
-          <div class="step-dot active"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
+      <!-- REGISTER -->
+      <div id="reg-sec" style="display:none">
+        <div class="step-bar">
+          <div class="step-pip now"></div>
+          <div class="step-pip"></div>
+          <div class="step-pip"></div>
         </div>
 
-        <!-- Step 1: Name & Username -->
-        <div class="auth-step reg-step active">
+        <!-- Step 1 -->
+        <div class="auth-step reg-step on">
           <div class="step-title">Who are you?</div>
-          <div class="step-sub">Your name and a unique username for your profile.</div>
-          <div class="field-group">
-            <label class="field-label">Full Name</label>
-            <input class="field" id="reg-name" type="text" placeholder="Your full name" autocomplete="name"/>
+          <div class="step-sub">Your name and a username for your profile.</div>
+          <div class="fw"><label class="fl">Full Name</label>
+            <input class="fd" id="r-name" type="text" placeholder="Your full name" autocomplete="name"/>
           </div>
-          <div class="field-group">
-            <label class="field-label">Username</label>
-            <input class="field" id="reg-username" type="text" placeholder="@username" autocomplete="username"/>
+          <div class="fw"><label class="fl">Username</label>
+            <input class="fd" id="r-user" type="text" placeholder="@handle" autocomplete="username"/>
           </div>
-          <button class="btn btn-primary" id="reg-next1" onclick="regNext1()">Continue →</button>
+          <button class="btn btn-p" id="r-n1" onclick="regNext1()">Continue →</button>
         </div>
 
-        <!-- Step 2: Email, Password, Terms -->
+        <!-- Step 2 -->
         <div class="auth-step reg-step">
-          <button class="btn-back" onclick="goRegStep(1)">← Back</button>
+          <button class="step-back" onclick="goStep(1)">← Back</button>
           <div class="step-title">Secure your account</div>
-          <div class="step-sub">Your email and a strong password.</div>
-          <div class="field-group">
-            <label class="field-label">Email</label>
-            <input class="field" id="reg-email" type="email" placeholder="you@example.com" autocomplete="email"/>
+          <div class="step-sub">Email and a strong password.</div>
+          <div class="fw"><label class="fl">Email</label>
+            <input class="fd" id="r-email" type="email" placeholder="you@example.com" autocomplete="email"/>
           </div>
-          <div class="field-group">
-            <label class="field-label">Password</label>
-            <input class="field" id="reg-pass" type="password" placeholder="Min. 6 characters" autocomplete="new-password"/>
+          <div class="fw"><label class="fl">Password</label>
+            <input class="fd" id="r-pass" type="password" placeholder="Minimum 6 characters" autocomplete="new-password"/>
           </div>
-          <div class="terms-check">
-            <input type="checkbox" id="reg-terms"/>
-            <label for="reg-terms">
+          <div class="terms-row">
+            <input type="checkbox" id="r-terms"/>
+            <label for="r-terms" class="terms-txt">
               I agree to the <a href="#" onclick="showLegal('terms');return false">Terms of Service</a>
               and <a href="#" onclick="showLegal('privacy');return false">Privacy Policy</a>
             </label>
           </div>
-          <button class="btn btn-primary" onclick="regNext2()">Continue →</button>
+          <button class="btn btn-p" onclick="regNext2()">Continue →</button>
         </div>
 
-        <!-- Step 3: Choose phone number -->
+        <!-- Step 3 -->
         <div class="auth-step reg-step">
-          <button class="btn-back" onclick="goRegStep(2)">← Back</button>
+          <button class="step-back" onclick="goStep(2)">← Back</button>
           <div class="step-title">Your FIL number</div>
-          <div class="step-sub">Pick a unique number — this is how people find and connect with you on Fall I Love.</div>
-          <div class="phone-display">
-            <div class="number" id="selected-phone-display">+1 — — —</div>
-            <div class="label">Your selected number</div>
+          <div class="step-sub">Pick a unique number — how people find and call you on Fall I Love.</div>
+          <div class="phone-chosen">
+            <div class="phone-chosen-n" id="phone-disp">+1 — — —</div>
+            <div class="phone-chosen-l">Selected number</div>
           </div>
-          <div class="phone-alts" id="phone-options"></div>
-          <button class="btn btn-ghost" style="margin-bottom:12px;font-size:0.82rem" onclick="refreshPhoneOptions()">🔄 Generate new options</button>
-          <button class="btn btn-primary" id="reg-finish" onclick="doRegister()">Create Account ✦</button>
+          <div class="phone-opts" id="phone-opts"></div>
+          <button class="btn btn-g btn-sm" style="margin-bottom:14px" onclick="refreshPhones()">🔄 Generate new options</button>
+          <button class="btn btn-gold" id="r-finish" onclick="doRegister()">Create Account ✦</button>
         </div>
 
-        <div class="auth-error" id="auth-error"></div>
+        <div class="auth-err" id="auth-err"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ LEGAL PAGE ══ -->
-<div id="legal-page" class="legal-page">
+<!-- LEGAL PAGE -->
+<div id="legal-page">
   <div class="legal-inner">
-    <div class="legal-back" onclick="closeLegal()">← Back</div>
+    <button class="legal-back-btn" onclick="closeLegal()">← Back</button>
 
-    <!-- TERMS -->
-    <div id="legal-content-terms">
-      <div class="legal-title">Terms of <em>Service</em></div>
-      <div class="legal-updated">Last updated: January 1, 2030</div>
-
-      <div class="legal-section">
-        <h2>1. Acceptance of Terms</h2>
-        <p>By creating a Fall I Love account or using our platform in any way, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use Fall I Love.</p>
-        <p>These Terms apply to all users — whether you're sending messages, browsing the Match screen, or sharing your link with friends.</p>
+    <div id="legal-terms">
+      <div class="legal-h1">Terms of <em>Service</em></div>
+      <div class="legal-date">Last updated: January 1, 2030</div>
+      <div class="legal-sec"><h2>1. Acceptance of Terms</h2>
+        <p>By creating a Fall I Love account or using our platform in any way, you agree to be bound by these Terms of Service.</p>
+        <p>These Terms apply to all users — messaging, browsing Match, or sharing your link.</p>
       </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>2. Your Account</h2>
-        <ul>
-          <li>You must be at least 13 years old to use Fall I Love.</li>
-          <li>You are responsible for all activity that occurs under your account.</li>
-          <li>You must provide accurate information during registration, including your name and selected phone number.</li>
-          <li>Your FIL number is unique to your account and cannot be transferred.</li>
-          <li>You may not impersonate any other person or create accounts for abusive purposes.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>3. Messaging & Content</h2>
-        <p>Fall I Love is a communication platform. You are responsible for all content you send, share, or upload.</p>
-        <ul>
-          <li>Do not send spam, unsolicited messages, or harmful content.</li>
-          <li>Do not share illegal, abusive, threatening, or sexually explicit content.</li>
-          <li>Do not harass, bully, or intimidate other users.</li>
-          <li>Images are compressed and stored via Cloudinary. Do not upload images you do not have the right to share.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>4. Match Feature</h2>
-        <p>The Match screen allows users to discover and connect with other Fall I Love members. By using Match:</p>
-        <ul>
-          <li>You consent to your public profile (name, photo, bio, FIL number) being visible to other users in the Match queue.</li>
-          <li>You may skip or connect with users at any time.</li>
-          <li>A match only becomes a conversation when both users connect with each other.</li>
-          <li>We do not guarantee connections or matches.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>5. Shareable Links</h2>
-        <p>Each user receives a unique shareable link tied to their username or UID. Sharing your link is voluntary. Anyone with your link can initiate a conversation with you.</p>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>6. Termination</h2>
-        <p>We reserve the right to suspend or terminate any account that violates these Terms, without prior notice. You may also delete your account at any time.</p>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>7. Disclaimer</h2>
-        <p>Fall I Love is provided "as is" without warranties of any kind. We are not responsible for the content of messages between users. This is a demonstration platform — use responsibly.</p>
-      </div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>2. Your Account</h2><ul>
+        <li>You must be at least 13 years old to use Fall I Love.</li>
+        <li>You are responsible for all activity under your account.</li>
+        <li>Your FIL number is unique and cannot be transferred.</li>
+        <li>You may not impersonate others or create abusive accounts.</li>
+      </ul></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>3. Messaging &amp; Content</h2>
+        <p>You are responsible for all content you send, share, or upload.</p><ul>
+        <li>Do not send spam, harmful, or illegal content.</li>
+        <li>Do not harass, bully, or threaten other users.</li>
+        <li>Images are compressed and stored via Cloudinary.</li>
+      </ul></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>4. Match Feature</h2>
+        <p>By using Match, you consent to your public profile being visible to other users. A match only becomes a conversation when both users connect.</p></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>5. Shareable Links</h2>
+        <p>Each user receives a unique link tied to their username. Anyone with your link can initiate a conversation with you.</p></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>6. Termination</h2>
+        <p>We reserve the right to suspend accounts that violate these Terms. You may delete your account at any time.</p></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>7. Disclaimer</h2>
+        <p>Fall I Love is provided "as is." We are not responsible for the content of messages between users. This is a demonstration platform.</p></div>
     </div>
 
-    <!-- PRIVACY -->
-    <div id="legal-content-privacy" style="display:none">
-      <div class="legal-title">Privacy <em>Policy</em></div>
-      <div class="legal-updated">Last updated: January 1, 2030</div>
-
-      <div class="legal-section">
-        <h2>1. Information We Collect</h2>
-        <ul>
-          <li><strong>Account info:</strong> Your name, username, email, FIL phone number, and optional bio and profile photo.</li>
-          <li><strong>Messages:</strong> Text and images you send are stored in Firebase Realtime Database.</li>
-          <li><strong>Online presence:</strong> We track when you are online to show your status to people you chat with.</li>
-          <li><strong>Match data:</strong> Who you've seen, skipped, or connected with on the Match screen.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>2. How We Use Your Information</h2>
-        <ul>
-          <li>To operate your account and enable messaging.</li>
-          <li>To show your profile in the Match discovery queue.</li>
-          <li>To generate and display your unique FIL number and shareable link.</li>
-          <li>To provide online/offline status to your chat partners.</li>
-          <li>We do not sell your data to advertisers.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>3. Data Storage</h2>
-        <p>Your data is stored in Google Firebase (Realtime Database) and images are stored on Cloudinary. By using Fall I Love, you consent to your data being processed by these services.</p>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>4. Visibility</h2>
-        <ul>
-          <li>Your name, FIL number, bio, and photo may be visible to other Fall I Love users — in chats, groups, the Match screen, and via your shareable link.</li>
-          <li>Your email address is never displayed to other users.</li>
-          <li>Messages in a conversation are visible only to the members of that conversation.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>5. Your Rights</h2>
-        <ul>
-          <li>You may update your profile name, bio, and photo at any time.</li>
-          <li>You may stop using Fall I Love and delete your account at any time.</li>
-          <li>You may contact us to request deletion of your data.</li>
-        </ul>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>6. Cookies & Local Storage</h2>
-        <p>We use browser session storage only to remember whether you dismissed install prompts. No advertising cookies are used.</p>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>7. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy periodically. Continued use of Fall I Love after changes means you accept the updated policy.</p>
-      </div>
-
-      <div class="legal-divider"></div>
-      <div class="legal-section">
-        <h2>8. Contact</h2>
-        <p>For privacy questions or data requests, contact us through the app. Fall I Love is a demonstration platform built on Firebase.</p>
-      </div>
+    <div id="legal-privacy" style="display:none">
+      <div class="legal-h1">Privacy <em>Policy</em></div>
+      <div class="legal-date">Last updated: January 1, 2030</div>
+      <div class="legal-sec"><h2>1. Information We Collect</h2><ul>
+        <li><strong>Account info:</strong> Name, username, email, FIL number, bio, profile photo.</li>
+        <li><strong>Messages:</strong> Text and images you send — stored in Firebase.</li>
+        <li><strong>Presence:</strong> Online/offline status shown to chat partners.</li>
+        <li><strong>Match data:</strong> Who you've seen, skipped, or connected with.</li>
+      </ul></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>2. How We Use Your Information</h2><ul>
+        <li>To operate your account and enable messaging.</li>
+        <li>To show your profile in the Match discovery queue.</li>
+        <li>To generate your FIL number and shareable link.</li>
+        <li>We do not sell your data to advertisers.</li>
+      </ul></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>3. Data Storage</h2>
+        <p>Data is stored in Google Firebase Realtime Database. Images are stored on Cloudinary. By using Fall I Love, you consent to data being processed by these services.</p></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>4. Visibility</h2><ul>
+        <li>Name, FIL number, bio, and photo may be visible to other users.</li>
+        <li>Your email address is never shown to other users.</li>
+        <li>Messages are only visible to conversation members.</li>
+      </ul></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>5. Your Rights</h2>
+        <p>You may update your profile or delete your account at any time.</p></div>
+      <div class="legal-rule"></div>
+      <div class="legal-sec"><h2>6. Contact</h2>
+        <p>For privacy questions or data requests, contact us through the app.</p></div>
     </div>
   </div>
 </div>
@@ -289,222 +237,226 @@
 <!-- ══ MAIN APP ══ -->
 <div id="app">
 
-  <!-- ── SIDEBAR ── -->
+  <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
-
-    <div class="sidebar-header">
-      <div class="sidebar-brand">Fall <em>I Love</em></div>
-      <button class="icon-btn" title="New Message" onclick="openNewDM()">✉️</button>
-      <button class="icon-btn" title="New Group" onclick="openNewGroup()">👥</button>
-      <button class="icon-btn" title="Toggle Theme" onclick="toggleTheme()">🌓</button>
+    <div class="sb-head">
+      <div class="sb-wm">Fall <em>I Love</em></div>
+      <button class="ibtn" title="New Message" onclick="openDMModal()">✉️</button>
+      <button class="ibtn" title="New Group" onclick="openGroupModal()">👥</button>
+      <button class="ibtn" title="Theme" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <!-- Nav -->
-    <div class="sidebar-nav">
-      <button class="nav-tab active" data-tab="chats" onclick="setTab('chats')">
-        <span class="nav-icon">💬</span>Chats
+    <div class="sb-nav">
+      <button class="sbn on" data-tab="chats" onclick="setTab('chats')">
+        <span class="sbn-icon">💬</span>Chats
+        <span class="sbn-badge" id="chats-badge"></span>
       </button>
-      <button class="nav-tab" data-tab="match" onclick="setTab('match')">
-        <span class="nav-icon">✨</span>Match
+      <button class="sbn" data-tab="match" onclick="setTab('match')">
+        <span class="sbn-icon">✨</span>Match
       </button>
-      <button class="nav-tab" data-tab="people" onclick="setTab('people')">
-        <span class="nav-icon">🔍</span>People
+      <button class="sbn" data-tab="people" onclick="setTab('people')">
+        <span class="sbn-icon">🔍</span>People
       </button>
     </div>
 
-    <!-- Search -->
-    <div class="sidebar-search">
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input class="search-input" id="conv-search" placeholder="Search conversations…"
-          oninput="renderConvList(this.value)"/>
+    <div class="sb-srch">
+      <div class="sb-srch-wrap">
+        <span class="srch-ic">🔍</span>
+        <input class="sb-si" id="sb-si" placeholder="Search conversations…" oninput="renderConvList(this.value)"/>
       </div>
     </div>
 
-    <!-- ── PANEL: CHATS ── -->
-    <div class="sidebar-panel panel visible" data-panel="chats" style="flex:1;overflow:hidden;display:flex;flex-direction:column">
-      <div id="suggestions-wrap" class="suggestions-section"></div>
+    <!-- CHATS PANEL -->
+    <div class="sb-panel on" data-panel="chats">
+      <div class="sug-strip" id="sug-strip" style="display:none">
+        <div class="sug-lbl">People you may know</div>
+        <div class="sug-row" id="sug-row"></div>
+      </div>
       <div class="conv-list" id="conv-list">
-        <div class="empty-panel"><div class="empty-panel-icon">💬</div>Loading…</div>
+        <div class="sb-empty"><div class="sb-empty-ic">💬</div><p>Loading…</p></div>
       </div>
     </div>
 
-    <!-- ── PANEL: MATCH ── -->
-    <div class="sidebar-panel panel" data-panel="match" style="flex:1;overflow-y:auto;padding:16px">
-      <div class="match-card-stack" id="match-stack">
-        <div class="empty-panel" style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div class="empty-panel-icon">✨</div>Loading…
+    <!-- MATCH PANEL -->
+    <div class="sb-panel" data-panel="match">
+      <div class="match-panel">
+        <div class="match-stack" id="match-stack">
+          <div class="sb-empty" style="height:100%;justify-content:center"><div class="sb-empty-ic">✨</div><p>Loading…</p></div>
+        </div>
+        <div class="match-acts">
+          <button class="mab mab-skip" title="Skip" onclick="MATCH_Q[MATCH_I]&&doSkip(MATCH_Q[MATCH_I])">✕</button>
+          <button class="mab mab-conn" title="Connect" onclick="MATCH_Q[MATCH_I]&&doConnect(MATCH_Q[MATCH_I])">❤️</button>
+          <button class="mab mab-star" title="Super" onclick="MATCH_Q[MATCH_I]&&doConnect(MATCH_Q[MATCH_I])">⭐</button>
         </div>
       </div>
-      <div class="match-actions">
-        <button class="match-btn match-btn-skip" title="Skip" onclick="matchQueue[matchIndex] && doMatchSkip(matchQueue[matchIndex])">✕</button>
-        <button class="match-btn match-btn-connect" title="Connect" onclick="matchQueue[matchIndex] && doMatchConnect(matchQueue[matchIndex])">❤️</button>
-        <button class="match-btn match-btn-super" title="Super Connect" onclick="matchQueue[matchIndex] && doMatchConnect(matchQueue[matchIndex])">⭐</button>
-      </div>
     </div>
 
-    <!-- ── PANEL: PEOPLE (Search) ── -->
-    <div class="sidebar-panel panel" data-panel="people" style="flex:1;overflow:hidden;display:flex;flex-direction:column">
-      <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
-        <div class="search-wrap">
-          <span class="search-icon">👤</span>
-          <input class="search-input" placeholder="Search by name or FIL number…"
-            oninput="searchUsers(this.value,'people-results')"/>
+    <!-- PEOPLE PANEL -->
+    <div class="sb-panel" data-panel="people">
+      <div class="ppl-srch-w">
+        <div class="sb-srch-wrap">
+          <span class="srch-ic">👤</span>
+          <input class="sb-si" placeholder="Name or FIL number…" oninput="searchUsers(this.value,'ppl-list')"/>
         </div>
       </div>
-      <div class="conv-list" id="people-results">
-        <div class="empty-panel"><div class="empty-panel-icon">🔍</div>Search for people by name or FIL number to start a conversation.</div>
+      <div class="ppl-list" id="ppl-list">
+        <div class="sb-empty"><div class="sb-empty-ic">🔍</div><p>Search for people by name or FIL number.</p></div>
       </div>
     </div>
 
-    <!-- Sidebar footer -->
-    <div class="sidebar-footer">
-      <div class="avatar avatar-sm" id="footer-avatar" onclick="openProfile()" style="cursor:pointer"></div>
-      <div class="my-info" onclick="openProfile()" style="cursor:pointer">
-        <div class="my-name" id="footer-name">—</div>
-        <div class="my-phone" id="footer-phone">—</div>
+    <!-- Footer -->
+    <div class="sb-foot">
+      <div class="av av-sm" id="foot-av" style="cursor:pointer" onclick="openProfile()"></div>
+      <div class="sb-foot-inf" onclick="openProfile()">
+        <div class="sb-foot-nm" id="foot-nm">—</div>
+        <div class="sb-foot-ph" id="foot-ph">—</div>
       </div>
-      <button class="icon-btn" title="Share your link" onclick="shareMyLink()">🔗</button>
-      <button class="icon-btn" title="Sign Out" onclick="doLogout()">🚪</button>
+      <button class="ibtn" title="Share link" onclick="shareLink()">🔗</button>
+      <button class="ibtn" title="Sign Out" onclick="doLogout()">🚪</button>
     </div>
   </div>
 
-  <!-- ── CHAT AREA ── -->
-  <div class="chat-area" id="chat-area">
+  <!-- CHAT PANE -->
+  <div class="chat-pane" id="chat-pane">
 
     <!-- Empty state -->
-    <div id="empty-state" class="empty-state">
-      <div class="empty-state-logo">Fall <em>I Love</em></div>
-      <p>Select a conversation, search for someone, or use Match to discover new people.</p>
-      <button class="btn btn-primary" style="max-width:220px;margin-top:8px" onclick="setTab('match')">✨ Open Match</button>
+    <div id="chat-empty" class="chat-empty">
+      <div class="ce-logo">Fall <em>I Love</em></div>
+      <p class="ce-sub">Select a conversation, discover people, or use Match to connect.</p>
+      <div class="ce-grid">
+        <div class="ce-feat"><div class="ce-fi">✨</div><div class="ce-fl">Match</div><div class="ce-fd">Discover &amp; connect with people</div></div>
+        <div class="ce-feat"><div class="ce-fi">🔗</div><div class="ce-fl">Share Link</div><div class="ce-fd">Anyone can message you</div></div>
+        <div class="ce-feat"><div class="ce-fi">📷</div><div class="ce-fl">Photos</div><div class="ce-fd">Compressed &amp; beautiful</div></div>
+        <div class="ce-feat"><div class="ce-fi">😊</div><div class="ce-fl">Reactions</div><div class="ce-fd">Express yourself quickly</div></div>
+      </div>
     </div>
 
     <!-- Active chat -->
-    <div id="chat-view" class="chat-view">
-      <div class="chat-header">
-        <button class="icon-btn back-btn" onclick="backToSidebar()">←</button>
-        <div class="avatar" id="chat-avatar"></div>
-        <div class="chat-header-info">
-          <div class="chat-header-name" id="chat-name">—</div>
-          <div class="chat-header-sub" id="chat-status">—</div>
+    <div id="chat-view" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+      <div class="chat-head">
+        <button class="ibtn back-btn" onclick="backToSidebar()">←</button>
+        <div class="av av-md" id="chat-av"></div>
+        <div class="ch-inf">
+          <div class="ch-nm" id="ch-nm">—</div>
+          <div class="ch-sub" id="ch-sub">—</div>
         </div>
-        <div class="chat-header-actions">
-          <button class="icon-btn" title="Info" onclick="openChatInfo()">ℹ️</button>
-          <button class="icon-btn" title="Share link" onclick="shareChatLink()">🔗</button>
+        <div class="ch-acts">
+          <button class="ibtn" title="Info" onclick="openChatInfo()">ℹ️</button>
+          <button class="ibtn" title="Share" onclick="shareChatLink()">🔗</button>
         </div>
       </div>
 
-      <div class="messages-wrap">
-        <div class="messages-area" id="messages-area"></div>
-        <button class="scroll-bottom" id="scroll-bottom" onclick="scrollBottom()">↓</button>
+      <div class="msgs-wrap">
+        <div class="msgs-area" id="msgs-area"></div>
+        <button class="scroll-btn" id="scroll-btn" onclick="scrollBot()">↓</button>
       </div>
 
       <div class="input-bar">
-        <div class="upload-preview-bar" id="upload-bar">
-          <img id="upload-thumb" src="" alt=""/>
-          <span class="upload-preview-name" id="upload-fname"></span>
-          <button class="upload-cancel-btn" onclick="clearUpload()">✕</button>
+        <div class="img-prev" id="img-prev">
+          <img class="ip-thumb" id="ip-thumb" src="" alt=""/>
+          <span class="ip-nm" id="ip-nm"></span>
+          <button class="ip-x" onclick="clearImg()">✕</button>
         </div>
         <div class="input-row">
-          <button class="icon-btn" title="Attach image" onclick="triggerImgPick()">📎</button>
-          <input type="file" id="img-file-input" accept="image/*" style="display:none" onchange="handleImgPick(this)"/>
-          <textarea class="msg-input" id="msg-input" placeholder="Message…" rows="1"
-            onkeydown="handleMsgKey(event)" oninput="autoGrow(this)"></textarea>
-          <button class="send-btn" onclick="sendMessage()">➤</button>
+          <button class="ibtn" title="Attach image" onclick="trigImg()">📎</button>
+          <input type="file" id="img-input" accept="image/*" style="display:none" onchange="handleImg(this)"/>
+          <textarea class="msg-ta" id="msg-ta" placeholder="Message…" rows="1"
+            onkeydown="msgKey(event)" oninput="autoGrow(this)"></textarea>
+          <button class="send-btn" onclick="sendMsg()">➤</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ MATCH MODAL ══ -->
+<!-- MATCH MODAL -->
 <div class="match-modal" id="match-modal">
-  <div class="match-modal-card">
-    <div class="match-confetti">🎉</div>
-    <div class="match-modal-title">It's a Match!</div>
-    <div class="match-modal-sub">You and <strong id="match-modal-their-name"></strong> both connected.<br/>Start a conversation now!</div>
-    <div class="match-avatars">
-      <div class="avatar avatar-lg" id="match-modal-av1"></div>
-      <div class="match-heart">❤️</div>
-      <div class="avatar avatar-lg" id="match-modal-av2"></div>
+  <div class="mm-box">
+    <div class="mm-emoji">🎉</div>
+    <div class="mm-title">It's a Match!</div>
+    <div class="mm-sub">You and <strong id="mm-their"></strong> both connected.<br/>Start a conversation now!</div>
+    <div class="mm-avs">
+      <div class="mm-av av av-lg" id="mm-av1"></div>
+      <div class="mm-heart">❤️</div>
+      <div class="mm-av av av-lg" id="mm-av2"></div>
     </div>
-    <button class="btn btn-primary" onclick="closeMatchModal();setTab('chats')">💬 Start Chatting</button>
-    <button class="btn btn-ghost" style="margin-top:10px" onclick="closeMatchModal()">Keep Matching</button>
+    <div class="mm-btns">
+      <button class="btn btn-gold" onclick="closeMatchModal();setTab('chats')">💬 Start Chatting</button>
+      <button class="btn btn-g" onclick="closeMatchModal()">Keep Matching</button>
+    </div>
   </div>
 </div>
 
-<!-- ══ MODALS ══ -->
+<!-- MODALS -->
 
 <!-- New DM -->
-<div class="modal-overlay" id="new-dm-modal">
-  <div class="modal">
-    <div class="modal-title">New Message</div>
-    <input class="modal-field" id="dm-search" placeholder="Search by name or FIL number…"
-      oninput="searchUsers(this.value,'dm-results')"/>
-    <div id="dm-results" style="max-height:240px;overflow-y:auto;margin-top:8px"></div>
-    <div class="modal-actions">
-      <button class="modal-btn" onclick="closeModal('new-dm-modal')">Cancel</button>
+<div class="modal-ov" id="dm-modal">
+  <div class="modal-box">
+    <div class="modal-ttl">New Message</div>
+    <input class="mfd" id="dm-search" placeholder="Search by name or FIL number…" oninput="searchUsers(this.value,'dm-results')"/>
+    <div id="dm-results" style="max-height:240px;overflow-y:auto;margin-top:6px"></div>
+    <div class="modal-acts">
+      <button class="mbtn" onclick="closeModal('dm-modal')">Cancel</button>
     </div>
   </div>
 </div>
 
 <!-- New Group -->
-<div class="modal-overlay" id="new-group-modal">
-  <div class="modal">
-    <div class="modal-title">New Group</div>
-    <input class="modal-field" id="group-name-input" placeholder="Group name…"/>
-    <input class="modal-field" id="group-member-search" placeholder="Add members…"
-      oninput="searchUsers(this.value,'group-member-results',true)"/>
-    <div id="group-member-results" style="max-height:180px;overflow-y:auto;margin-top:4px"></div>
-    <div id="group-selected" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"></div>
-    <div class="modal-actions">
-      <button class="modal-btn" onclick="closeModal('new-group-modal')">Cancel</button>
-      <button class="modal-btn primary" onclick="createGroup()">Create Group</button>
+<div class="modal-ov" id="grp-modal">
+  <div class="modal-box">
+    <div class="modal-ttl">New Group</div>
+    <input class="mfd" id="grp-name" placeholder="Group name…"/>
+    <input class="mfd" id="grp-msrch" placeholder="Add members…" oninput="searchUsers(this.value,'grp-mresults',true)"/>
+    <div id="grp-mresults" style="max-height:170px;overflow-y:auto;margin-top:4px"></div>
+    <div id="grp-selected" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"></div>
+    <div class="modal-acts">
+      <button class="mbtn" onclick="closeModal('grp-modal')">Cancel</button>
+      <button class="mbtn p" onclick="createGroup()">Create</button>
     </div>
   </div>
 </div>
 
 <!-- Profile -->
-<div class="modal-overlay" id="profile-modal">
-  <div class="modal">
-    <div class="modal-title">My Profile</div>
-    <div class="profile-pic-circle" id="prof-avatar-circle" onclick="triggerProfPic()">
-      <div class="edit-overlay">📷</div>
+<div class="modal-ov" id="prof-modal">
+  <div class="modal-box">
+    <div class="modal-ttl">My Profile</div>
+    <div class="prof-ring" id="prof-ring" onclick="trigProfPic()">
+      <div class="hov">📷</div>
     </div>
-    <input type="file" id="prof-pic-input" accept="image/*" style="display:none" onchange="uploadProfPic(this)"/>
-    <div class="label-xs">Display Name</div>
-    <input class="modal-field" id="prof-name" placeholder="Your name…"/>
-    <div class="label-xs">Bio</div>
-    <input class="modal-field" id="prof-bio" placeholder="A short bio…"/>
-    <div class="label-xs" style="margin-top:4px">FIL Number</div>
-    <div style="font-family:monospace;font-size:0.9rem;color:var(--text2);padding:6px 0 12px" id="prof-phone"></div>
-    <div class="label-xs">Your shareable link</div>
+    <input type="file" id="prof-pic-in" accept="image/*" style="display:none" onchange="uploadProfPic(this)"/>
+    <div class="lxs">Display Name</div>
+    <input class="mfd" id="prof-nm" placeholder="Your name…"/>
+    <div class="lxs">Bio</div>
+    <input class="mfd" id="prof-bio" placeholder="A short bio…"/>
+    <div class="lxs">FIL Number</div>
+    <div id="prof-phone" style="font-family:monospace;font-size:.9rem;color:var(--c-t2);padding:4px 0 14px;letter-spacing:.04em"></div>
+    <div class="lxs">Shareable Link</div>
     <div class="share-box">
-      <span class="share-text" id="prof-link">—</span>
+      <span class="share-url" id="prof-link">—</span>
       <button class="copy-btn" onclick="copyProfLink()">Copy</button>
     </div>
-    <div class="modal-actions">
-      <button class="modal-btn" onclick="closeModal('profile-modal')">Close</button>
-      <button class="modal-btn primary" onclick="saveProfile()">Save</button>
+    <div class="modal-acts">
+      <button class="mbtn" onclick="closeModal('prof-modal')">Close</button>
+      <button class="mbtn p" onclick="saveProfile()">Save</button>
     </div>
   </div>
 </div>
 
 <!-- Chat Info -->
-<div class="modal-overlay" id="chat-info-modal">
-  <div class="modal">
-    <div class="modal-title" id="info-title">Chat Info</div>
+<div class="modal-ov" id="info-modal">
+  <div class="modal-box">
+    <div class="modal-ttl" id="info-ttl">Chat Info</div>
     <div id="info-body"></div>
-    <div class="modal-actions">
-      <button class="modal-btn" onclick="closeModal('chat-info-modal')">Close</button>
+    <div class="modal-acts">
+      <button class="mbtn" onclick="closeModal('info-modal')">Close</button>
     </div>
   </div>
 </div>
 
 <!-- Lightbox -->
 <div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" alt=""/>
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
 </div>
 
 <!-- Toast -->
